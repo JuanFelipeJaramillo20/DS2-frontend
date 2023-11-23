@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { createContext, useMemo, useState } from "react";
 
 export const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [globalStateExample, setGlobalStateExample] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const values = useMemo(
     () => ({
-      globalStateExample,
-      setGlobalStateExample,
+      openMenu,
+      setOpenMenu,
     }),
-    [globalStateExample, setGlobalStateExample]
+    [openMenu, setOpenMenu]
   );
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
@@ -20,5 +20,5 @@ const AppProvider = ({ children }) => {
 export default AppProvider;
 
 AppProvider.propTypes = {
-    children: PropTypes.node.isRequired
-}
+  children: PropTypes.node.isRequired,
+};
