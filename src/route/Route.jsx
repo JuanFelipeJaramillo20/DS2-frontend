@@ -2,10 +2,11 @@ import { lazy, Suspense } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import Loader from "../components/Loader/Index";
+import Layout from "../layout/Index";
 import Login from "../pages/Login/Index";
+import Dashboard from "../pages/Dashboard/Index";
 
 const Register = lazy(() => import("../pages/Register/Index"));
-const Dashboard = lazy(() => import("../pages/Dashboard/Index"));
 
 export const RoutesConfiguration = () => {
   return (
@@ -24,9 +25,9 @@ export const RoutesConfiguration = () => {
         <Route
           path="/dashboard"
           element={
-            <Suspense fallback={<Loader fullScreen />}>
+            <Layout>
               <Dashboard />
-            </Suspense>
+            </Layout>
           }
         />
       </Routes>
