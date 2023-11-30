@@ -1,0 +1,13 @@
+.toast-custom {
+    background: rgba(235, 104, 27, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    &__header {
+      background-color: #232B2B;
+      border-radius: 10px 10px 0px 0px;
+      color: #E5E4E0;
+    }
+  }
