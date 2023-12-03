@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import Toast from 'react-bootstrap/Toast';
+import icon from "../../assets/icon.png";
 
 const ToastCustom = (props) => {
   return (
@@ -11,8 +12,8 @@ const ToastCustom = (props) => {
       className='position-fixed top-0 start-50 translate-middle-x mt-2 m-md-2 toast-custom'
     >
       <Toast.Header closeButton={false} className='toast-custom__header'>
-        <img src='/logo.svg' height='30' className='me-2' alt='app logo' />
-        <strong className='me-auto'>Gym App</strong>
+        <img src={icon} height='30' className='me-2' alt='app logo' />
+        <strong className='me-auto'>DS2</strong>
       </Toast.Header>
       <Toast.Body>{props.message}</Toast.Body>
     </Toast>

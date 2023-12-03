@@ -25,7 +25,8 @@ const Login = () => {
 
   const onSubmit = async () => {
     try {
-      toggleSpinner(true);
+      //toggleSpinner(true);
+      toggleToast(true);
     } catch (error) {
       console.error(error);
       if (!error.response?.status) {
