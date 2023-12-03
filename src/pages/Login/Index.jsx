@@ -102,7 +102,7 @@ const Login = () => {
           {errors.password?.message}
         </Form.Control.Feedback>
         <label className="login__option-text">Forgot Password?</label>
-        <Link className="login__option-text" to="/signup">
+        <Link className="login__option-text" to="/register">
           Register
         </Link>
         <button type="submit" className="login__button">
