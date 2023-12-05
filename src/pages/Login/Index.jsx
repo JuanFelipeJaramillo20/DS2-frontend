@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import { REGEXP } from "../../config";
 import { useState } from "react";
+import axios from "axios";
 import ToastCustom from "../../components/ToastCustom/index";
 import useToast from "../../hooks/useToast";
 import Spinner from "react-bootstrap/Spinner";
@@ -14,8 +15,27 @@ const Login = () => {
   const { showToast, toggleToast } = useToast();
   const navigate = useNavigate();
   const { isLoading, toggleSpinner } = useSpinner();
-
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [errMsg, setErrMsg] = useState("");
+
+  const login = async (data) => {
+    try {
+      const body = {
+        username: data.email,
+        password: data.password,
+      };
+
+      const response = await axios.post(`${BASE_URL}/login`, body);
+      if (response.status === 200) {
+        console.log("RESPONSE", response.data.Token);
+        localStorage.setItem("token", response.data.Token);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
 
   const {
     register,
@@ -23,16 +43,17 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async () => {
+  const onSubmit = async (data) => {
     try {
-      //toggleSpinner(true);
+      toggleSpinner(true);
+      await login(data);
       toggleToast(true);
     } catch (error) {
       console.error(error);
       if (!error.response?.status) {
-        setErrMsg('Server is down');
+        setErrMsg("Server is down");
       } else if (error.response.status === 500) {
-        setErrMsg('Invalid Credentials. Try again.');
+        setErrMsg("Invalid Credentials. Try again.");
       } else {
         setErrMsg(error.data?.message);
       }
@@ -44,10 +65,6 @@ const Login = () => {
   const validationSchema = {
     email: {
       required: "Email is required",
-      pattern: {
-        value: REGEXP.email,
-        message: "Insert a valid email",
-      },
     },
     password: {
       required: "Password is required",
@@ -77,10 +94,10 @@ const Login = () => {
             fill="#9D9D9D"
           />
         </svg>
-        <FloatingLabel controlId="email" label="Email address" className="mb-3">
+        <FloatingLabel controlId="email" label="Username" className="mb-3">
           <Form.Control
-            type="email"
-            placeholder="name@example.com"
+            type="text"
+            placeholder="username"
             className="login__input"
             isInvalid={!!errors.email}
             {...register("email", validationSchema.email)}
