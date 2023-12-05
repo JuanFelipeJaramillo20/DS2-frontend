@@ -1,20 +1,16 @@
 import PropTypes from "prop-types";
-import { useContext } from "react";
+// import { useContext } from "react";
 
-import { AppContext } from "../context/AppContext";
+import Nav from "../components/Nav/Index";
+
+// import { AppContext } from "../context/AppContext";
 
 const Layout = ({ children }) => {
-  const { setOpenMenu, openMenu } = useContext(AppContext);
+  // const { setOpenMenu, openMenu } = useContext(AppContext);
 
   return (
     <section className="layout-section">
-      <div
-        onClick={() => {
-          setOpenMenu((prev) => !prev);
-        }}
-      >
-        {openMenu ? "open" : "close"}
-      </div>
+      <Nav />
       <main>{children}</main>
       <div>footer component</div>
     </section>

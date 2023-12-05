@@ -32,6 +32,40 @@ export const RoutesConfiguration = () => {
             </Layout>
           }
         />
+        <Route
+          path="/products"
+          element={
+            <Layout>
+              <div></div>
+            </Layout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Layout>
+              <div></div>
+            </Layout>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Layout>
+              <div></div>
+            </Layout>
+          }
+        />
+        <Route
+          path="/services/:serviceID"
+          element={
+            <Suspense fallback={<Loader fullScreen />}>
+              <Layout >
+                <div>hola</div>
+              </Layout>
+            </Suspense>
+          }
+        />
       </Routes>
     </Router>
   );
