@@ -87,6 +87,7 @@
     border-radius: 30px;
     background: #FFF;
     box-shadow: 0px 4px 4px 8px rgba(220, 191, 255, 0.25);
+    margin-bottom: 40px !important;
 }
 
 .create__extras-input {
@@ -110,4 +111,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.create__label{
+    font-family: Poppins;
+    margin-bottom: 10px;
 }
