@@ -1,0 +1,54 @@
+.profile-section__container {
+  & header {
+    width: 90vw;
+    min-height: 12dvw;
+
+    margin-inline: auto;
+    margin-top: 2%;
+
+    border-radius: 15px;
+    background: #a253f924;
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    padding: 15px;
+    & > div:first-child {
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.63);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      min-width: 90px;
+      min-height: 100px;
+
+      & img {
+        width: 80%;
+      }
+    }
+    & div:last-child {
+        & h2 {
+            font-size: 25px;
+        }
+    }
+  }
+  & > div:last-child {
+    display: flex;
+    margin-inline: auto;
+    width: 90vw;
+    gap: 5%;
+    & h2 {
+        font-size: 20px;
+    }
+    & article {
+      width: 50%;
+      background-color: #a253f924;
+      border-radius: 15px;
+      padding: 15px;
+      min-height: 52dvh;
+    }
+  }
+}
