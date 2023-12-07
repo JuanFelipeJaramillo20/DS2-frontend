@@ -8,6 +8,7 @@ import Dashboard from "../pages/Dashboard/Index";
 import CreateService from "../pages/CreateService/Index";
 
 const Register = lazy(() => import("../pages/Register/Index"));
+const Profile = lazy(() => import("../pages/Profile/Index"));
 
 export const RoutesConfiguration = () => {
   return (
@@ -52,7 +53,9 @@ export const RoutesConfiguration = () => {
           path="/profile"
           element={
             <Layout>
-              <div></div>
+              <Suspense fallback={<Loader fullScreen />}>
+                <Profile />
+              </Suspense>
             </Layout>
           }
         />
@@ -60,7 +63,7 @@ export const RoutesConfiguration = () => {
           path="/services/:serviceID"
           element={
             <Suspense fallback={<Loader fullScreen />}>
-              <Layout >
+              <Layout>
                 <div>hola</div>
               </Layout>
             </Suspense>

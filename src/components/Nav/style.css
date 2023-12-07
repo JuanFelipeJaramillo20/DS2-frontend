@@ -9,7 +9,10 @@
   padding: 15px;
 
   position: relative;
-
+  & > section {
+    display: flex;
+    align-items: center;
+  }
   & > section > button {
     width: 120px;
     height: 33px;
@@ -22,8 +25,14 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     & a {
       text-decoration: none;
+      display: block;
+      width: 100%;
       color: #fff;
     }
   }
@@ -51,5 +60,16 @@
         object-fit: cover;
       }
     }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .nav-bar__container > section > button {
+    width: 80px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .nav-bar__container > section > button {
+    width: min-content;
   }
 }
