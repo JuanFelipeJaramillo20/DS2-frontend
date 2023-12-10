@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
     <section className="layout-section">
       <Nav />
       <main>{children}</main>
-      <div>footer component</div>
+      {/* <div>footer component</div> */}
     </section>
   );
 };

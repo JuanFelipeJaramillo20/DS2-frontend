@@ -1,6 +1,6 @@
 .nav-bar__container {
   border: 1px solid rgba(0, 0, 0, 0.3);
-  width: 100vw;
+  width: 98vw;
 
   display: flex;
   flex-direction: row;
