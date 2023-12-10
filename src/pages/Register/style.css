@@ -1,0 +1,62 @@
+.register__main-container {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+.register__form-container {
+    width: 500px;
+    height: 600px;
+    flex-shrink: 0;
+    fill: #fff;
+    stroke-width: 1px;
+    stroke: #a253f9;
+    border: 1px solid #a253f9;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+  
+.input-icon {
+    position: absolute;
+}
+  
+.register__input {
+    width: 326px;
+    height: 33px;
+    border-radius: 30px;
+    background: #fff;
+    box-shadow: 0px 4px 4px 8px rgba(220, 191, 255, 0.25);
+}
+  
+.register__option-text {
+    color: #abb8dd;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+  
+.register__button {
+    width: 156px;
+    height: 43px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: none;
+    background: linear-gradient(274deg, #8d31ec 0.46%, #bc82fe 100%);
+    color: #fff;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+  

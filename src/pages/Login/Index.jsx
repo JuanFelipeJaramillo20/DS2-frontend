@@ -28,7 +28,8 @@ const Login = () => {
       const response = await axios.post(`${BASE_URL}/login`, body);
       if (response.status === 200) {
         console.log("RESPONSE", response.data.Token);
-        localStorage.setItem("token", response.data.Token);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user_id", response.data.id_user);
         navigate("/dashboard");
       }
     } catch (error) {
