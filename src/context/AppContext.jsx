@@ -5,13 +5,16 @@ export const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [updateUserFetch, setUpdateUserFetch] = useState(false);
 
   const values = useMemo(
     () => ({
       openMenu,
       setOpenMenu,
+      updateUserFetch,
+      setUpdateUserFetch,
     }),
-    [openMenu, setOpenMenu]
+    [openMenu, setOpenMenu, updateUserFetch, setUpdateUserFetch]
   );
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

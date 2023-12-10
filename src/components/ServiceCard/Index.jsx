@@ -1,19 +1,85 @@
 import { useNavigate } from "react-router";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import axios from "axios";
 
+import trash from "../../assets/images/delete.png";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import "./style.css";
 
-// props => {service}
-const ServiceCard = () => {
+const ServiceCard = ({ service, isUser }) => {
   const history = useNavigate();
+
+  const deleteOffer = async () => {
+    if (!service) return;
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+    const token = localStorage.getItem("token");
+    const url = `${BASE_URL}/offers/${service.id_ofertante}`;
+    const headers = {
+      Authorization: `${token}`,
+      "Content-Type": "application/json",
+    };
+    try {
+      const response = await axios.delete(url, { headers: headers });
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
-    <section onClick={() => {
-        history('/services/{service.id}')
-    }} className="service-card__container">
+    <section className="service-card__container">
       <article>
-        <img src="/vite.png" alt="service main picture" />
+        {isUser && (
+          <img
+            onClick={deleteOffer}
+            className="trash-icon--card"
+            src={trash}
+            alt="trash icon"
+          />
+        )}
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          slidesPerView="1"
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+        >
+          {Array.isArray(service?.imagenes_url) ? (
+            service.imagenes_url.map((img) => (
+              <SwiperSlide>
+                <img src={img} alt="service main picture" />
+              </SwiperSlide>
+            ))
+          ) : (
+            <SwiperSlide>
+              <img src="/vite.png" alt="service main picture" />
+            </SwiperSlide>
+          )}
+        </Swiper>
       </article>
-      <article>
-        <p>service information</p>
+      <article
+        onClick={() => {
+          history(`/services/${service.id_ofertante}`);
+        }}
+      >
+        <div>
+          <div>
+            <p>Precio:</p>
+            <span>{service.precio}</span>
+          </div>
+          <div>
+            <p>Estado:</p>
+            {service.estado}
+          </div>
+        </div>
+        <div>
+          <p>Descripción:</p>
+          <span>{service.descripcion}</span>
+        </div>
       </article>
     </section>
   );

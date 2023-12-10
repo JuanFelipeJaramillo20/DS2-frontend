@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 
+import useGetUser from "../../hooks/useGetUser";
+
 import "./style.css";
 
 const Nav = () => {
+  const userId = localStorage.getItem("user_id");
+  const token = localStorage.getItem("token");
+  const { user } = useGetUser(userId, token);
   return (
     <nav className="nav-bar__container">
       <section>
@@ -29,8 +34,16 @@ const Nav = () => {
       </section>
       <section>
         <button>
+          <Link to="/create">Offer</Link>
+        </button>
+      </section>
+      <section>
+        <button>
           <Link to="/profile">
-            <img src={"/images/no-user-img.png"} alt="user profile picture" />
+            <img
+              src={user.image ? user.image : "/images/no-user-img.png"}
+              alt="user profile picture"
+            />
           </Link>
         </button>
       </section>
