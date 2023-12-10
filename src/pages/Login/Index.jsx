@@ -65,7 +65,7 @@ const Login = () => {
 
   const validationSchema = {
     email: {
-      required: "Email is required",
+      required: "Username is required",
     },
     password: {
       required: "Password is required",
