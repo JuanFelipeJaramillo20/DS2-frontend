@@ -153,7 +153,7 @@ const Profile = () => {
               />
             </div>
             <div className="button-form">
-              <button type="submit">send</button>
+              <button type="submit">Actualizar</button>
             </div>
           </form>
         </article>
