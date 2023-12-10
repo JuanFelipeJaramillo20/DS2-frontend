@@ -6,6 +6,7 @@ import Layout from "../layout/Index";
 import Login from "../pages/Login/Index";
 import Dashboard from "../pages/Dashboard/Index";
 import CreateService from "../pages/CreateService/Index";
+import Catalogue from "../pages/Catalogue";
 
 const Register = lazy(() => import("../pages/Register/Index"));
 const Profile = lazy(() => import("../pages/Profile/Index"));
@@ -30,6 +31,14 @@ export const RoutesConfiguration = () => {
           element={
             <Layout>
               <Dashboard />
+            </Layout>
+          }
+        />
+        <Route
+          path="/catalogue"
+          element={
+            <Layout>
+              <Catalogue />
             </Layout>
           }
         />
@@ -69,6 +78,7 @@ export const RoutesConfiguration = () => {
             </Suspense>
           }
         />
+        
       </Routes>
     </Router>
   );

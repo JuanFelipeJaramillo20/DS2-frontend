@@ -1,0 +1,13 @@
+.catalogue-container {
+    & .service-cards {
+        margin-top: 2%;
+
+        display: flex;
+        gap: 3.33%;
+        flex-wrap: wrap;
+
+        margin-inline: auto;
+
+        width: 80%;
+    }
+}
