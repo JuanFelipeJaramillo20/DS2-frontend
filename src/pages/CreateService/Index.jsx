@@ -104,6 +104,11 @@ const CreateService = () => {
                         <select name="category" id="category" className='create__extras-input' onChange={(e) => { setFormData({ ...formData, categorias: [e.target.value] }) }}>
                             <option value="">Select a category</option>
                             <option value="misc">Miscelaneo</option>
+                            <option value="plom">Plomería</option>
+                            <option value="carp">Carpintería</option>
+                            <option value="elect">Eléctrico</option>
+                            <option value="other">Otro</option>
+                            v
                         </select>
                     </div>
                     <div className="create__right-container">
