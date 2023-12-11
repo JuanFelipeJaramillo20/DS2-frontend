@@ -52,14 +52,6 @@ export const RoutesConfiguration = () => {
           }
         />
         <Route
-          path="/about"
-          element={
-            <Layout>
-              <div></div>
-            </Layout>
-          }
-        />
-        <Route
           path="/profile"
           element={
             <Layout>

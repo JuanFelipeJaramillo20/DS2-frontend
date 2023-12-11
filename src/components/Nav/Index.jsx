@@ -29,11 +29,6 @@ const Nav = () => {
       </section>
       <section>
         <button>
-          <Link to="/about">About</Link>
-        </button>
-      </section>
-      <section>
-        <button>
           <Link to="/create">Offer</Link>
         </button>
       </section>
