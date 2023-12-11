@@ -16,6 +16,7 @@ const CreateService = () => {
     const { showToast, toggleToast } = useToast();
     const { isLoading, toggleSpinner } = useSpinner();
     const [errMsg, setErrMsg] = useState("");
+    const [imagesUploaded, setImagesUploaded] = useState(false);
     const nextMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, currentDate.getDate());
     const [formData, setFormData] = useState({
         titulo: '',
@@ -23,7 +24,6 @@ const CreateService = () => {
         precio: '',
         fecha_exp: nextMonthDate.toISOString().split('T')[0],
         categorias: [],
-        imagenes_url: [],
         estado: 'Disponible',
         id_ofertante: Number(localStorage.getItem("user_id"))
     });
@@ -39,6 +39,7 @@ const CreateService = () => {
         event.preventDefault();
         toggleSpinner(true);
         const token = localStorage.getItem("token");
+        const imgs = [];
         for (const file of acceptedFiles) {
             const formDataImgs = new FormData();
             formDataImgs.append('file', file);
@@ -49,14 +50,15 @@ const CreateService = () => {
                 const response = await axios.post('https://api.cloudinary.com/v1_1/dtgou3hjo/image/upload', formDataImgs);
                 console.log(response.data);
                 const imageUrl = response.data.secure_url;
-                await setFormData({ ...formData, imagenes_url: [...formData.imagenes_url, imageUrl] })
+                imgs.push(imageUrl);
             } catch (error) {
                 console.error(error);
             }
         }
 
         try {
-            const createOfferResponse = await axios.post(`${BASE_URL}/offer`, formData, {
+            console.log("URLS", imgs);
+            const createOfferResponse = await axios.post(`${BASE_URL}/offer`, {...formData, imagenes_url: imgs}, {
                 headers: {
                     Authorization: token,
                 },
@@ -67,7 +69,9 @@ const CreateService = () => {
             setErrMsg(createOfferResponse.data);
         } catch (error) {
             console.error(error);
-            setErrMsg(error)
+            setErrMsg(error);
+            toggleToast(true);
+            toggleSpinner(false);
         }
     };
 
