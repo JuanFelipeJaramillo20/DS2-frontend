@@ -2,6 +2,10 @@
   & .form-pics {
     margin-bottom: 5%;
   }
+  & .review {
+    transform: scale(0.40);
+    width: 100%;
+  }
   & form {
     & input {
       border-radius: 10px;
