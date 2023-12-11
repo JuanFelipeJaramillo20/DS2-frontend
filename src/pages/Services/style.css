@@ -1,26 +1,49 @@
 .offer-single__view {
-    display: flex;
-    flex-direction: row;
-    gap: 3%;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+  justify-content: center;
+  align-items: center;
   & article {
-    width: 45%;
+    margin-bottom: 10px;
+    width: 80%;
     background-color: #a253f924;
     border-radius: 15px;
     padding: 15px;
     min-height: 52dvh;
     & > .swiper {
-        width: 100%;
-        & img {
-            width: 40vw ;
-            max-width: 300px;
-            margin-inline: auto;
-            display: flex;
-        }
+      width: 100%;
+      & img {
+        width: 40vw;
+        max-width: 300px;
+        margin-inline: auto;
+        display: flex;
+      }
     }
-    & .information--offer {
-        
+  }
+  & .information--offer {
+    & > div:first-child {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      flex-direction: row;
+      align-items: center;
+      & > div {
+        display: flex;
+        flex-direction: column;
+        & p {
+          font-size: 14px;
+          height: 0;
+          opacity: 0.7;
+        }
+      }
+    }
+    & > div:last-child {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin-top: 10%;
+        & div {
+            text-align: center;
+        }
     }
   }
 }

@@ -119,7 +119,7 @@ const Profile = () => {
               <input
                 id="Email"
                 className="form-input"
-                type="text"
+                type="email"
                 placeholder={user.email ?? "Nuevo email"}
               />
             </div>
@@ -174,7 +174,7 @@ const Profile = () => {
           <div className="offers-user">
             {allOffers &&
               allOffers.map((offer) => (
-                <ServiceCard key={offer.id_ofertante} isUser service={offer} />
+                <ServiceCard key={offer.id} isUser service={offer} />
               ))}
           </div>
         </article>

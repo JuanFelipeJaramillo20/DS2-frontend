@@ -14,7 +14,6 @@ const useGetSingleOffer = (offerID, token) => {
     const getOffer = async () => {
       try {
         const response = await axios.get(url, { headers: headers });
-        console.log(response)
         setOffer(response.data)
       } catch (err) {
         console.err(err);

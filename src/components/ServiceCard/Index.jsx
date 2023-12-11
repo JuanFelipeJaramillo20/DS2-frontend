@@ -18,7 +18,7 @@ const ServiceCard = ({ service, isUser }) => {
     if (!service) return;
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     const token = localStorage.getItem("token");
-    const url = `${BASE_URL}/offers/${service.id_ofertante}`;
+    const url = `${BASE_URL}/offers/${service.id}`;
     const headers = {
       Authorization: `${token}`,
       "Content-Type": "application/json",
@@ -30,6 +30,7 @@ const ServiceCard = ({ service, isUser }) => {
       console.error(err);
     }
   };
+
   return (
     <section className="service-card__container">
       <article>
@@ -49,8 +50,8 @@ const ServiceCard = ({ service, isUser }) => {
           scrollbar={{ draggable: true }}
         >
           {Array.isArray(service?.imagenes_url) ? (
-            service.imagenes_url.map((img) => (
-              <SwiperSlide>
+            service.imagenes_url.map((img, key) => (
+              <SwiperSlide key={key}>
                 <img src={img} alt="service main picture" />
               </SwiperSlide>
             ))
@@ -63,7 +64,7 @@ const ServiceCard = ({ service, isUser }) => {
       </article>
       <article
         onClick={() => {
-          history(`/services/${service.id_ofertante}`);
+          history(`/services/${service.id}`);
         }}
       >
         <div>
