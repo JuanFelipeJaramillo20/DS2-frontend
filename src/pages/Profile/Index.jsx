@@ -1,8 +1,11 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 
+import StarRatings from "react-star-ratings";
+
 import useGetUser from "../../hooks/useGetUser";
 import useGetUserOffer from "../../hooks/useGetUserOffers";
+import useGetCalification from "../../hooks/useGetCalification";
 
 import ServiceCard from "../../components/serviceCard/Index";
 import LoadPictures from "../../components/LoadPictures/Index";
@@ -15,6 +18,7 @@ const Profile = () => {
   const token = localStorage.getItem("token");
   const { user, setUpdateUserFetch } = useGetUser(userID, token);
   const { allOffers } = useGetUserOffer(userID, token, BASE_URL);
+  const { reviews } = useGetCalification(userID, token);
 
   const inputsRef = useRef([]);
 
@@ -95,6 +99,14 @@ const Profile = () => {
           <h2>
             Bienvenid@ otra vez <b>{user.name && user.name}</b>!
           </h2>
+          <span className="review">
+            <StarRatings
+              rating={reviews}
+              starRatedColor="blue"
+              numberOfStars={5}
+              name="rating"
+            />
+          </span>
         </div>
       </header>
       <br />
