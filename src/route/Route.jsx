@@ -10,6 +10,7 @@ import Catalogue from "../pages/Catalogue";
 
 const Register = lazy(() => import("../pages/Register/Index"));
 const Profile = lazy(() => import("../pages/Profile/Index"));
+const OfferSingle = lazy(() => import("../pages/Services/Index"));
 
 export const RoutesConfiguration = () => {
   return (
@@ -73,12 +74,11 @@ export const RoutesConfiguration = () => {
           element={
             <Suspense fallback={<Loader fullScreen />}>
               <Layout>
-                <div>hola</div>
+                <OfferSingle />
               </Layout>
             </Suspense>
           }
         />
-        
       </Routes>
     </Router>
   );

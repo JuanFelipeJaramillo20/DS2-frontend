@@ -1,0 +1,26 @@
+.offer-single__view {
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+    justify-content: center;
+    align-items: center;
+  & article {
+    width: 45%;
+    background-color: #a253f924;
+    border-radius: 15px;
+    padding: 15px;
+    min-height: 52dvh;
+    & > .swiper {
+        width: 100%;
+        & img {
+            width: 40vw ;
+            max-width: 300px;
+            margin-inline: auto;
+            display: flex;
+        }
+    }
+    & .information--offer {
+        
+    }
+  }
+}
