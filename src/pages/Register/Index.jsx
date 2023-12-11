@@ -14,7 +14,7 @@ import { useRef } from "react";
 
 const Register = () => {
   // const { showToast, toggleToast } = useToast();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // const { isLoading, toggleSpinner } = useSpinner();
   const BASE_URL = import.meta.env.VITE_BASE_URL;
   const inputsRef = useRef([]);
@@ -24,18 +24,18 @@ const Register = () => {
     e.preventDefault(); 
     
     // const formValues = Object.fromEntries(new window.FormData(e.target))
-    inputsRef.current = Array.from(document.querySelectorAll(".form-input"));
+    inputsRef.current = Array.from(document.querySelectorAll(".register__input"));
     
     try{
       const url = `${BASE_URL}/user`;
 
       let userValues = {
-        name: '',
-        city: '',
-        email: '',
-        phone: '',
-        username: '',
-        password: ''
+        name: "",
+        city: "",
+        email: "",
+        phone: "",
+        username: "",
+        password: ""
       };
 
       for (const input of inputsRef.current){
@@ -44,11 +44,12 @@ const Register = () => {
           [input["id"]]: input["value"]
         };
       }
-      console.log(userValues);
+      // console.log(userValues);
       const response = await axios.post(url, userValues);
-      // if (response.status === 200) {
-      //   navigate("/");
-      // }
+      if (response.status === 201) {
+        navigate("/");
+      }
+      console.log(response);
       if (!response.data) console.error("error");
     }catch (err) {
       console.error(err);
@@ -96,7 +97,7 @@ const Register = () => {
             />
           </svg>
             <div className="input-label">
-              <label htmlFor="Name">Nombre</label>
+              <label htmlFor="name">Nombre</label>
               <input
                 id="name"
                 className="register__input"
@@ -105,7 +106,7 @@ const Register = () => {
               />
             </div>
             <div className="input-label">
-              <label htmlFor="Email">Email</label>
+              <label htmlFor="email">Email</label>
               <input
                 id="email"
                 className="register__input"
@@ -114,7 +115,7 @@ const Register = () => {
             </div>
             
             <div className="input-label">
-              <label htmlFor="Username">Username</label>
+              <label htmlFor="username">Username</label>
               <input
                 id="username"
                 className="register__input"
@@ -123,7 +124,7 @@ const Register = () => {
               />
             </div>
             <div className="input-label">
-              <label htmlFor="City">city</label>
+              <label htmlFor="city">city</label>
               <input
                 id="city"
                 className="register__input"
@@ -132,7 +133,7 @@ const Register = () => {
               />
             </div>
             <div className="input-label">
-              <label htmlFor="Phone">Phone</label>
+              <label htmlFor="phone">Phone</label>
               <input
                 id="phone"
                 className="register__input"
@@ -141,7 +142,7 @@ const Register = () => {
               />
             </div>
             <div className="input-label">
-              <label htmlFor="Password">Contraseña</label>
+              <label htmlFor="password">Contraseña</label>
               <input
                 id="password"
                 className="register__input"
