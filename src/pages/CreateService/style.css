@@ -130,3 +130,9 @@
     margin-bottom: 10px;
     /* Adjust the margin as needed */
 }
+
+.spinner{
+    position: absolute;
+    top:10%;
+    left:50%;
+}
